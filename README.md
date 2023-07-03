@@ -75,7 +75,7 @@ pnpm run test
 
 ## 🤝 Contributing
 
-Contributions, issues and feature requests are welcome! \ Feel free to check [issues page](https://github.com/pawanpaudel93/arweave-contracts-js/issues).
+Contributions, issues and feature requests are welcome! \ Feel free to check [issues page](https://github.com/pawanpaudel93/arweave-contracts-js-template/issues).
 
 ## Show your support
 
