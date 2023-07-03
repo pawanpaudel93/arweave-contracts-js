@@ -1,0 +1,8 @@
+{
+    "ticker": "EXAMPLE_PST_TOKEN",
+    "owner": "5glNksg7gRpA0JIXXvCBjlx6U2RHpMG73Msfftke2lY",
+    "canEvolve": true,
+    "balances": {
+        "5glNksg7gRpA0JIXXvCBjlx6U2RHpMG73Msfftke2lY": 10000000
+    }
+}

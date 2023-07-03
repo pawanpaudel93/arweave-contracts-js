@@ -1,0 +1,23 @@
+{
+  "name": "arweave-contracts-js-template",
+  "version": "1.0.0",
+  "description": "Arweave Contracts JS Template",
+  "main": "index.js",
+  "author": {
+    "name": "Pawan Paudel",
+    "email": "pawanpaudel93@gmail.com"
+  },
+  "license": "MIT",
+  "scripts": {
+    "deploy:testnet": "node scripts/deploy-testnet.js",
+    "deploy:mainnet": "node scripts/deploy-mainnet.js",
+    "test": "vitest"
+  },
+  "dependencies": {
+    "arlocal": "^1.1.60",
+    "arweave": "^1.13.7",
+    "vitest": "^0.32.2",
+    "warp-contracts": "^1.4.14",
+    "warp-contracts-plugin-deploy": "^1.0.9"
+  }
+}
