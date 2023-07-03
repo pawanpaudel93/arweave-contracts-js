@@ -20,11 +20,11 @@ Using pnpm,
 pnpm install
 ```
 
-## Secrets
+## Wallet Keyfile
 
-If wallet keyfile is not present, it is auto created.
+If `wallet.json` wallet keyfile is not present in .secrets directory or wallet keyfile path is not provided as an environment variable `WALLET_PATH`, it is auto created.
 
-- `.secrets/wallet.json` - Arweave wallet keyfile.
+Wallet keyfile path can also be provided as an environment variable. Rename `.env.example` to `.env` and provide `WALLET_PATH` value.
 
 ## Scripts
 
