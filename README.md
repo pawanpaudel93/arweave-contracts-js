@@ -20,6 +20,13 @@ Using pnpm,
 pnpm install
 ```
 
+## Secrets
+
+If wallet Keyfiles are not present, they are auto created.
+
+- `.secrets/wallet_mainnet.json` - Arweave wallet keyfile for mainnet.
+- `.secrets/wallet_testnet.json` - Arweave wallet keyfile for testnet.
+
 ## Scripts
 
 ### Deploy to Mainnet

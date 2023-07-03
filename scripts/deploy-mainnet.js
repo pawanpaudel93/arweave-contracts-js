@@ -1,7 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 const { WarpFactory } = require("warp-contracts");
-const { DeployPlugin } = require("warp-contracts-plugin-deploy");
+const { DeployPlugin, ArweaveSigner } = require("warp-contracts-plugin-deploy");
 
 (async () => {
   let wallet;
@@ -30,7 +30,7 @@ const { DeployPlugin } = require("warp-contracts-plugin-deploy");
 
   console.log("Deployment started");
   const result = await warp.deploy({
-    wallet,
+    wallet: new ArweaveSigner(wallet),
     initState: JSON.stringify(initState),
     src: contractSrc,
   });
