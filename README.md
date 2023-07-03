@@ -22,10 +22,9 @@ pnpm install
 
 ## Secrets
 
-If wallet Keyfiles are not present, they are auto created.
+If wallet keyfile is not present, it is auto created.
 
-- `.secrets/wallet_mainnet.json` - Arweave wallet keyfile for mainnet.
-- `.secrets/wallet_testnet.json` - Arweave wallet keyfile for testnet.
+- `.secrets/wallet.json` - Arweave wallet keyfile.
 
 ## Scripts
 

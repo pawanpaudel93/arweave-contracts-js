@@ -5,15 +5,7 @@ const { LoggerFactory, WarpFactory } = require("warp-contracts");
 const { DeployPlugin } = require("warp-contracts-plugin-deploy");
 
 describe("Testing PST contract", () => {
-  let arLocal,
-    warp,
-    wallet,
-    contractSrc,
-    initState,
-    contractId,
-    contract,
-    walletAddress,
-    targetAddress;
+  let arLocal, warp, wallet, contractSrc, initState, contractId, contract, walletAddress, targetAddress;
 
   beforeAll(async () => {
     // Set up ArLocal
@@ -31,16 +23,9 @@ describe("Testing PST contract", () => {
     targetAddress = await warp.arweave.wallets.jwkToAddress(targetWallet);
 
     // Deploying contract
-    contractSrc = fs.readFileSync(
-      path.join(__dirname, "../contracts/contract.js"),
-      "utf8"
-    );
-    initState = JSON.parse(
-      fs.readFileSync(
-        path.join(__dirname, "../contracts/init-state.json"),
-        "utf8"
-      )
-    );
+    const contractsDir = path.resolve("contracts");
+    contractSrc = fs.readFileSync(path.join(contractsDir, "contract.js"), "utf8");
+    initState = JSON.parse(fs.readFileSync(path.join(contractsDir, "init-state.json"), "utf8"));
 
     initState.balances = { [walletAddress]: 10000000 };
     initState.owner = walletAddress;
@@ -76,30 +61,20 @@ describe("Testing PST contract", () => {
     });
 
     const { cachedValue } = await contract.readState();
-    expect(cachedValue.state.balances[walletAddress]).toEqual(
-      initState.balances[walletAddress] - qty
-    );
+    expect(cachedValue.state.balances[walletAddress]).toEqual(initState.balances[walletAddress] - qty);
     expect(cachedValue.state.balances[targetAddress]).toEqual(qty);
   });
 
   it("should not possibe to transfer without target", async () => {
-    await expect(
-      contract.writeInteraction(
-        { function: "transfer", qty: 1000 },
-        { strict: true }
-      )
-    ).rejects.toThrow("No target specified");
+    await expect(contract.writeInteraction({ function: "transfer", qty: 1000 }, { strict: true })).rejects.toThrow(
+      "No target specified"
+    );
   });
 
   it("should not possible to transfer more than balance available", async () => {
     const qty = initState.balances[walletAddress] + 1;
     await expect(
-      contract.writeInteraction(
-        { function: "transfer", qty, target: targetAddress },
-        { strict: true }
-      )
-    ).rejects.toThrow(
-      `Caller balance not high enough to send ${qty} token(s)!`
-    );
+      contract.writeInteraction({ function: "transfer", qty, target: targetAddress }, { strict: true })
+    ).rejects.toThrow(`Caller balance not high enough to send ${qty} token(s)!`);
   });
 });
